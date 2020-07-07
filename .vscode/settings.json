@@ -1,0 +1,10 @@
+{
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.autoSurround": "never",
+    "editor.autoIndent": "none",
+    "editor.autoClosingQuotes": "never",
+    "editor.formatOnType": false,
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": false,
+    // "editor.codeActionsOnSave": null,
+}
