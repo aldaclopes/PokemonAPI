@@ -9,9 +9,6 @@ const DadosCarrinho = require('../Carrinho/dadoscarrinho')
 const Carrinho = require('../Carrinho/carrinho')
 const Produto = require('../Carrinho/produto')
 
-
-
-
 export default function Pokemons() {
     let history = useHistory();
     const [quantidade, setQuantidade] = useState('');

@@ -39,9 +39,9 @@ class DadosCarrinho {
         // return JSON.stringify(carrinhoAtual);
     }
 
-    async atualizarCarrinho(dados, carrinho) {
-        localStorage.setItem('carrinhoCompra', JSON.stringify(dados));
-        localStorage.setItem('totaisCarrinho', JSON.stringify(carrinho));
+    async atualizarCarrinho(carrinho, totais) {
+        localStorage.setItem('carrinhoCompra', JSON.stringify(carrinho));
+        localStorage.setItem('totaisCarrinho', JSON.stringify(totais));
         const totaisCarrinho = localStorage.getItem('totaisCarrinho');
         return JSON.parse(totaisCarrinho.toString());
     }
