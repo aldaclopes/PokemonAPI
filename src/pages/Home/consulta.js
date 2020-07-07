@@ -1,10 +1,9 @@
 const axios = require('axios');
 const URL = 'https://pokeapi.co/api/v2/pokemon';
-let busca;
+let busca='';
 async function consultarPokemon(busca) {
     console.log(busca,  'entrou na consulta')
     const url = `${URL}/${busca}`
-    url = `${URL}`
     console.log('url consulta ', url)
     const response = await axios.get(url)
     return response.data
