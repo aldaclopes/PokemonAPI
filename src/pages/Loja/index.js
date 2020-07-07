@@ -1,5 +1,4 @@
 import React, { useEffect, useState} from 'react';
-import * as S from './styled';
 import ReactDOM from 'react-dom';
 import { Container, Navbar, Row, Button, Input } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
@@ -25,16 +24,7 @@ export default function Pokemons() {
         dadosPokemon = JSON.parse(dadosPokemon);
         setPokemon(dadosPokemon);
         console.log('storage listaPokemon Json' , dadosPokemon);
-       
-        let totais = localStorage.getItem('totaisCarrinho');
-        totais = JSON.parse(totais);
-        setTotais(totais);
-        console.log('storage carrinho Json' , totais);
-
-        let carrinho = localStorage.getItem('carrinhoCompra');
-        console.log('storage carrinho Json' , carrinho)
-        carrinho = JSON.parse(carrinho)
-        setCarrinho(carrinho)
+        renderCarrinho()
     }, []);
     
     return (
@@ -121,6 +111,7 @@ async function tratarCompra(produtoSelecionado) {
         } catch (error) {
             console.error('erro ao acessar a função tratarCompra', error)
         }
+renderCarrinho()
     }
 
 function renderCarrinho() {
@@ -130,9 +121,24 @@ function renderCarrinho() {
         console.log('storage carrinho Json' , totais);
 
         let carrinho = localStorage.getItem('carrinhoCompra');
-        console.log('storage carrinho Json' , carrinho)
+        console.log('storage carrinho Json' , carrinho);
+        var element = (<> </>)
+        if (totais.quantidadeTotal == 0  ){
+           element = (
+            <> 
+{/* INCLUIR bodys conforme as OCORRENCIAS incluidas NO CARRINHO*/}
+            <div class="card-header">
+                <h5>Carrinho de Compras</h5>
+            </div>
+            <div class="card-body" id="bodycarrinho">Carrinho Vazio</div>
+            <div class="card-footer" id="totalcarrinho">             
+                    <p>Total itens: 0</p>  
+            </div>   
+             </> 
+           )}
+        else {
         carrinho = JSON.parse(carrinho)
-            const element = (
+            element = (
             <> 
 {/* INCLUIR bodys conforme as OCORRENCIAS incluidas NO CARRINHO*/}
             <div class="card-header">
@@ -161,6 +167,7 @@ function renderCarrinho() {
               </table>
  
             </div>
+
             <div class="card-footer" id="totalcarrinho">
                     TOTAL R$: { totais.valorTotal }                 
                     <p>Total itens: { totais.quantidadeTotal }</p>  
@@ -168,10 +175,11 @@ function renderCarrinho() {
             <div class="card-footer" id="finalizarcarrinho">
                 <b><Button type="button"><small>FINALIZAR</small></Button></b>
             </div> 
-            </> );  
+            </> )  
+        };
             ReactDOM.render(element, document.getElementById('carrinho'));                
     }
- setInterval(renderCarrinho, 3000);
+//  setInterval(renderCarrinho, 3000);
 
 function listaCarrinho() { 
 
