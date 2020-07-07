@@ -1,21 +1,21 @@
 import React, { useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
-import { Container, Navbar, Row, Button, Input } from 'reactstrap';
-import { useHistory } from 'react-router-dom';
+import {Button} from 'reactstrap';
+import {  } from 'react-router-dom';
 const { consultarPokemon } = require('../Home/consulta')
 // const { atualizarCarrinho, obterDadosCarrinho } = require('../Carrinho/dadocarrinho')
-const Commander = require('commander')
+// const Commander = require('commander')
 const DadosCarrinho = require('../Carrinho/dadoscarrinho')
-const Carrinho = require('../Carrinho/carrinho')
-const Produto = require('../Carrinho/produto')
+// const Carrinho = require('../Carrinho/carrinho')
+// const Produto = require('../Carrinho/produto')
 
 export default function Pokemons() {
-    let history = useHistory();
-    const [quantidade, setQuantidade] = useState('');
+    // let history = useHistory();
+    // const [quantidade, setQuantidade] = useState('');
     const [usuario, setUsuario] = useState('');
     const [listaPokemon, setPokemon] = useState([]);
-    const [carrinhoCompra, setCarrinho] = useState([]);
-    const [totaisCarrinho, setTotais] = useState([]);
+    // const [carrinhoCompra, setCarrinho] = useState([]);
+    // const [totaisCarrinho, setTotais] = useState([]);
     useEffect(() => {
         let dadosPokemon = localStorage.getItem('listaPokemon');
         dadosPokemon = JSON.parse(dadosPokemon);
@@ -51,7 +51,7 @@ export default function Pokemons() {
                                             <h5>{ pokemon.nome }</h5>
                                         </div>
                                         <div class="card-body">
-                                            <img src={ pokemon.imagem }></img>
+                                            <img src={ pokemon.imagem } alt="imagem produto"></img>
                                         </div>
                                         <div class="card-footer">
                                             R$ { pokemon.preço } cada   
@@ -120,7 +120,7 @@ function renderCarrinho() {
         let carrinho = localStorage.getItem('carrinhoCompra');
         console.log('storage carrinho Json' , carrinho);
         var element = (<> </>)
-        if (totais.quantidadeTotal == 0  ){
+        if (totais.quantidadeTotal === 0  ){
            element = (
             <> 
 {/* INCLUIR bodys conforme as OCORRENCIAS incluidas NO CARRINHO*/}
@@ -153,7 +153,7 @@ function renderCarrinho() {
                 return (
                 <>  
                <tr>
-                    <td><img src={ produtos.imagem } width="30%"></img></td>
+                    <td><img src={ produtos.imagem } width="30%" alt="imagem produto no carrinho"></img></td>
                     <td>{produtos.nome}</td>
                     <td>R$ {produtos.preço}</td>
                 {/* <td><Button type="excluir"><small>x</small></Button></td> */}
@@ -178,6 +178,6 @@ function renderCarrinho() {
     }
 //  setInterval(renderCarrinho, 3000);
 
-function listaCarrinho() { 
+// function listaCarrinho() { 
 
-}
+// }

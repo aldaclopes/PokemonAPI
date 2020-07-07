@@ -1,33 +1,33 @@
 import React,  { useState } from 'react';
 // import axios from 'axios';
-import * as S from './styled';
+// import * as S from './styled';
 import { useHistory } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 const { consultarPokemon } = require('./consulta')
 const { listarPokemon } = require('./lista')
-const Carrinho = require('../Carrinho/carrinho')
+// const Carrinho = require('../Carrinho/carrinho')
 const DadosCarrinho = require('../Carrinho/dadoscarrinho')
-const Produto = require('../Carrinho/produto')
+// const Produto = require('../Carrinho/produto')
 
 function App(props) {
     let history = useHistory();
-    localStorage.clear('listaPokemon');
+    localStorage.clear('listaPokemon', useState('') );
 //alterar para tratar o next 20 ocorrencias depois
-    const [proximo, setProximo] = useState('');
-    const [usuario, setUsuario] = useState('');
+    // const [proximo, setProximo] = useState('');
+    // const [usuario, setUsuario] = useState('');
     buscaLista();
     async function buscaLista(){
     try {
             const retornoLista = await listarPokemon(0, 40)
             console.log('JSON listaPokemon', JSON.stringify(retornoLista))
-            const totalPokemon = retornoLista.count;
-            const listaAnterior = retornoLista.previous;
-            const proximaLista = retornoLista.next;
+            // const totalPokemon = retornoLista.count;
+            // const listaAnterior = retornoLista.previous;
+            // const proximaLista = retornoLista.next;
             const resultados = retornoLista.results;
             console.log('dados lista', resultados);
             const detalhe = await detalhePokemon(resultados);
             // localStorage.setItem('listaPokemon', JSON.stringify(listaPokemon));
-            console.log(localStorage);     
+            console.log(localStorage, detalhe);     
             history.push('/loja');
             // const carrinhoCompra = await DadosCarrinho.inicializaCarrinho();
             // localStorage.setItem('carrinhoCompra', JSON.stringify(Carrinho));
@@ -77,7 +77,7 @@ async function detalhePokemon(listaPokemon){
         }
     }
     localStorage.setItem('listaPokemon', JSON.stringify(listaReduzida));
-    const carrinhoTeste = {}
+    // const carrinhoTeste = {}
 } 
 
 export default App;

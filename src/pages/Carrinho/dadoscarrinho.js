@@ -54,22 +54,22 @@ class DadosCarrinho {
         //calculo do valor total do produto novo incluído
         const precoTotalProduto = (produtoNovo.preço * quantidade).toFixed(2);
         // calcula valor total do carrinho a partir dos dados recebidos
-        var precoTotal = parseFloat(precoTotalProduto);
+        var precoTotalItem = parseFloat(precoTotalProduto);
         var valorTotalCarrinho = parseFloat(totaisCarrinho.valorTotal);
 
         // atualiza informacoes de totais do carrinho para a local storage
-        const totalCarrinho= valorTotalCarrinho + precoTotal;
+        const totalCarrinho= (valorTotalCarrinho + precoTotalItem).toFixed(2);
         const quantidadeItens = totaisCarrinho.quantidadeTotal + quantidade;
         const valorTotalProduto = precoTotalProduto;
         const quantidadeTotal = quantidadeItens;
-        const valorTotal = totalCarrinho;
+        const valorTotal = parseFloat(totalCarrinho);
         const totaisCarrinhoAtualizado = {quantidadeTotal, valorTotal};
         //atualiza quantidade e preco do item selecionado e acrescenta no produto do carrinho
         var quantidadeItem = quantidade;
         var precoTotal = parseFloat(valorTotalProduto);
         const produtoCarrinho = {...produtoNovo,quantidadeItem, precoTotal};
         var listaProdutos = []
-        if (totaisCarrinho.quantidadeTotal == 0 )  {
+        if (totaisCarrinho.quantidadeTotal === 0 )  {
              listaProdutos.push(produtoCarrinho)
          }  
          else 
@@ -77,8 +77,8 @@ class DadosCarrinho {
             listaProdutos.push(...carrinhoAtual, produtoCarrinho)
          };
 
-        const carrinhoCompra = listaProdutos
-        const carrinhoCompraS = JSON.stringify(carrinhoCompra)
+        // const carrinhoCompra = listaProdutos
+        // const carrinhoCompraS = JSON.stringify(carrinhoCompra)
         return await this.atualizarCarrinho(listaProdutos, totaisCarrinhoAtualizado);
     }
 
