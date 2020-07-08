@@ -92,6 +92,16 @@ async function tratarCompra(produtoSelecionado) {
         renderCarrinho()
     }
 
+async function excluirProduto(produtoSelecionado) {
+    try {
+        const exclusaoProduto = await DadosCarrinho.excluir(produtoSelecionado) 
+        console.log('Carrinho atualizado', exclusaoProduto)    
+    } catch (error) {
+        console.error('erro ao acessar a função exclusão de produto', error)
+    }
+        renderCarrinho()
+    }
+
 function renderCarrinho() {    
         let totais = localStorage.getItem('totaisCarrinho');
         totais = JSON.parse(totais);
@@ -133,7 +143,9 @@ function renderCarrinho() {
                <tr>
                     <td><img src={ produtos.imagem } width="30%" alt="imagem produto no carrinho"></img></td>
                     <td>{produtos.nome}</td>
-                    <td>R$ {produtos.preço}</td>
+                    <td>R$ {produtos.preço}  </td>
+                    <td><b></b><button type="button" className="btn btn-danger"
+                    onClick={() => excluirProduto(produtos.id)}>X</button></td>
                 {/* <td><Button type="excluir"><small>x</small></Button></td> */}
                 </tr>
                </> )
@@ -148,7 +160,7 @@ function renderCarrinho() {
                     <p>Total itens: { totais.quantidadeTotal }</p>  
             </div>
             <div className="card-footer" id="finalizarcarrinho">
-                <b><Button type="button"><small>FINALIZAR</small></Button></b>
+                <b><Button type="button" onClick={() => renderFinalizar(totais)}><small>FINALIZAR</small></Button></b>
             </div> 
             </> )  
         };
@@ -156,3 +168,20 @@ function renderCarrinho() {
             ReactDOM.render(element, document.getElementById('carrinho'));                
     }
 
+function renderFinalizar(totais) {
+     var element = (<> </>)
+           element = (
+            <> 
+            <div className="card-header">
+                <h5>Parabéns pela excelente compra</h5>
+            </div>
+            <div className="card-body" id="bodycarrinho">
+              <p className="card-text">Você está adiquirindo { totais.quantidadeTotal } Pokèmon</p>
+              <p className="card-text">O valor total da sua compra é R$: { totais.valorTotal }</p>
+            </div>   
+             </> 
+           )
+        ReactDOM.render(element, document.getElementById('carrinho'));
+        DadosCarrinho.inicializaCarrinho(); 
+        // renderCarrinho() 
+}  

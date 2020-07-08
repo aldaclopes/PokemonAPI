@@ -5,29 +5,17 @@ let inicio = 0
 let limite = 20
 async function listarPokemon(inicio, limite) {
     const url = `${URL}?offset=${inicio}&limit=${limite}`
-    const response = await axios.get(URL)
-    console.log('url lista ', url)
+    const response = await axios.get(url)
+    // console.log('url lista ', url)
     return response.data
 }
 
 listarPokemon(inicio, limite)
     .then(function(resultado) {
-        console.log('resultado', resultado)
+        console.log('retorno listarPokemon', resultado)
     })
     .catch(function(error) {
-        console.error('DEU RUIM', error)
+        console.error('Erro ao listar Pokemon', error)
     })
-    //transformar o arquivo retornado em um modulo
 // module.exports = {listarPokemon}
 export default listarPokemon
-
-//{"count":964,"next":"https://pokeapi.co/api/v2/pokemon?offset=20&limit=20","previous":null,"results":
-//{
-//   "count": 964,
-//   "next": "https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20",
-//   "previous": null,
-//   "results": [
-//     {
-//       "name": "bulbasaur",
-//       "url": "https://pokeapi.co/api/v2/pokemon/1/"
-//     },

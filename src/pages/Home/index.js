@@ -5,12 +5,7 @@ import { useHistory } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import consultarPokemon from './consulta'  
 import DadosCarrinho from '../Carrinho/dadoscarrinho'  
-// const { consultarPokemon } = require('./consulta')
 import listarPokemon from './lista' 
-// const { listarPokemon } = require('./lista')
-// const Carrinho = require('../Carrinho/carrinho')
-// const DadosCarrinho = require('../Carrinho/dadoscarrinho')
-// const Produto = require('../Carrinho/produto')
 
 function App(props) {
     let history = useHistory();
@@ -22,12 +17,12 @@ function App(props) {
     async function buscaLista(){
     try {
             const retornoLista = await listarPokemon(0, 40)
-            console.log('JSON listaPokemon', JSON.stringify(retornoLista))
+            // console.log('JSON listaPokemon', JSON.stringify(retornoLista))
             // const totalPokemon = retornoLista.count;
             // const listaAnterior = retornoLista.previous;
             // const proximaLista = retornoLista.next;
             const resultados = retornoLista.results;
-            console.log('dados lista', resultados);
+            // console.log('dados lista', resultados);
             const detalhe = await detalhePokemon(resultados);
             // localStorage.setItem('listaPokemon', JSON.stringify(listaPokemon));
             console.log(localStorage, detalhe);     
@@ -46,11 +41,9 @@ function App(props) {
 
 async function detalhePokemon(listaPokemon){
     const totalLinhas = listaPokemon.length
-    console.log('acessou detalhePokemon', totalLinhas, listaPokemon)
     const listaReduzida = []
     for (let indice = 0; indice <= totalLinhas - 1; indice++) {
         const nomePokemon = listaPokemon[indice].name
-        console.log('for detalhe ', indice, nomePokemon)
         try {
             //para cada pokemon da lista solicita consulta na API do bichinho para obter imagem, peso e ID
             const retornoConsulta = await consultarPokemon(nomePokemon)      
@@ -64,8 +57,6 @@ async function detalhePokemon(listaPokemon){
             var dadosPokemon = {id:`${idPokemon}`, nome: `${nomePokemon}`, preço:`${precoPokemon}`, imagem: `${urlImagem}`};
             // const dadosPokemon = retornoPokemon;
             listaReduzida.push(dadosPokemon)
-            console.log('lista', listaReduzida)
-            console.log("chamou a API 2", dadosPokemon); 
         } catch (error) {
         console.error('erro ao acessar a função detalhePokemon', error) 
         }

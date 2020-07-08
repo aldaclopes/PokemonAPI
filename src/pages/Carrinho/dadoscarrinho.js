@@ -82,47 +82,27 @@ class DadosCarrinho {
         return await this.atualizarCarrinho(listaProdutos, totaisCarrinhoAtualizado);
     }
 
-    // async listar(id) {
-    //     const dados = await this.obterDadosArquivo();
-    //     // se nao passar o id, traz tudo
-    //     return dados.filter(item => (id ? item.id == id : true));
-    // }
+    async excluir(id) {
+      
+        const carrinhoAtual = await this.obterDadosCarrinho();
+        const totaisCarrinho = await this.obterTotaisCarrinho();
 
-    // async atualizar(id, atualizacoes) {
-    //     const dados = await this.obterDadosArquivo();
-    //     const indice = dados.findIndex(item => item.id === parseInt(id));
-    //     if (indice === -1) {
-    //         throw Error('heroi não existe!');
-    //     }
+        const indice = carrinhoAtual.findIndex(item => item.id === id);
+        if (indice === -1) {
+            throw Error('produto nao encontrado!');
+        }
+        const produtoExcluir = carrinhoAtual[indice];
+        const quantidadeItens = totaisCarrinho.quantidadeTotal - produtoExcluir.quantidadeItem;
+        const totalCarrinho= totaisCarrinho.valorTotal - produtoExcluir.precoTotal;
 
-    //     const atual = dados[indice];
-    //     dados.splice(indice, 1);
+        const quantidadeTotal = quantidadeItens;
+        const valorTotal = totalCarrinho;
+        const totaisCarrinhoAtualizado = {quantidadeTotal, valorTotal};
+        carrinhoAtual.splice(indice, 1);
 
-    //     //workaround para remover valores undefined do objeto
-    //     const objAtualizado = JSON.parse(JSON.stringify(atualizacoes));
-    //     const dadoAtualizado = Object.assign({}, atual, objAtualizado);
+        return await this.atualizarCarrinho(carrinhoAtual, totaisCarrinhoAtualizado);
+    }
 
-    //     return await this.escreverArquivo([...dados, dadoAtualizado]);
-    // }
-
-    // async remover(id) {
-    //     if (!id) {
-    //         await this.escreverArquivo([]);
-    //         return true;
-    //     }
-
-    //     const dados = await this.obterDadosArquivo();
-
-    //     const indice = dados.findIndex(item => item.id === parseInt(id));
-    //     if (indice === -1) {
-    //         throw Error('heroi não existe!');
-    //     }
-    //     const atual = dados[indice];
-    //     dados.splice(indice, 1);
-    //     await this.escreverArquivo(dados);
-    //     return true;
-    // }
 }
 
 export default  new DadosCarrinho();
-// module.exports = new DadosCarrinho();
