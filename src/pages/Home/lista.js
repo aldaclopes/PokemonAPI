@@ -18,7 +18,8 @@ listarPokemon(inicio, limite)
         console.error('DEU RUIM', error)
     })
     //transformar o arquivo retornado em um modulo
-module.exports = {listarPokemon}
+// module.exports = {listarPokemon}
+export default listarPokemon
 
 //{"count":964,"next":"https://pokeapi.co/api/v2/pokemon?offset=20&limit=20","previous":null,"results":
 //{

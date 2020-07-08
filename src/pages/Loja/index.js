@@ -2,7 +2,7 @@ import React, { useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
 import {Button} from 'reactstrap';
 import {  } from 'react-router-dom';
-const { consultarPokemon } = require('../Home/consulta')
+import consultarPokemon from '../Home/consulta';  
 // const { atualizarCarrinho, obterDadosCarrinho } = require('../Carrinho/dadocarrinho')
 // const Commander = require('commander')
 const DadosCarrinho = require('../Carrinho/dadoscarrinho')

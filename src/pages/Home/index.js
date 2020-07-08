@@ -3,8 +3,10 @@ import React,  { useState } from 'react';
 // import * as S from './styled';
 import { useHistory } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-const { consultarPokemon } = require('./consulta')
-const { listarPokemon } = require('./lista')
+import consultarPokemon from './consulta'  
+// const { consultarPokemon } = require('./consulta')
+import listarPokemon from './lista' 
+// const { listarPokemon } = require('./lista')
 // const Carrinho = require('../Carrinho/carrinho')
 const DadosCarrinho = require('../Carrinho/dadoscarrinho')
 // const Produto = require('../Carrinho/produto')

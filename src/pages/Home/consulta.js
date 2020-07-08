@@ -18,4 +18,5 @@ consultarPokemon(busca)
     })
     //transformar o arquivo retornado em um modulo
 
-module.exports = {consultarPokemon}
+export default consultarPokemon
+// module.exports = {consultarPokemon}
