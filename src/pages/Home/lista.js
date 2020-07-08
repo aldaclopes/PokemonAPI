@@ -1,6 +1,8 @@
 const axios = require('axios');
 const URL = 'https://pokeapi.co/api/v2/pokemon'
 // https://pokeapi.co/api/v2/pokemon?offset=20&limit=20
+let inicio = 0
+let limite = 20
 async function listarPokemon(inicio, limite) {
     const url = `${URL}?offset=${inicio}&limit=${limite}`
     const response = await axios.get(URL)
@@ -8,7 +10,7 @@ async function listarPokemon(inicio, limite) {
     return response.data
 }
 
-listarPokemon()
+listarPokemon(inicio, limite)
     .then(function(resultado) {
         console.log('resultado', resultado)
     })

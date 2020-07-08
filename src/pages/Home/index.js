@@ -36,16 +36,7 @@ function App(props) {
         }
     }
     DadosCarrinho.inicializaCarrinho();
-
-
-    return (
-<>
-</>
-    //     <S.Container>
-    //        <S.Input className="usuarioInput" placeholder="Usuário" value={usuario} onChange={e => setUsuario(e.target.value)} />
-    //        <S.Button type="button" onClick={buscaLista}>Pesquisar</S.Button>
-    //    </S.Container>
-    );
+    return (<></>);
 
 }
 
