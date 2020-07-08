@@ -1,5 +1,6 @@
 import React, { useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button} from 'reactstrap';
 import {  } from 'react-router-dom';
 import consultarPokemon from '../Home/consulta';  
@@ -40,12 +41,21 @@ export default function Pokemons() {
                 </div>
             </div>
             <div className="row">
+                <div className="page-header " id="textoDestaque">
+                    <p></p>
+                    <h2>
+                        Em busca de Pokémon?<small>Aqui tem #fiqueemcasa</small>
+                    </h2> 
+                    {/* <img src="Loja/iconPokemon.jpg" width="10%" alt="logo pokemon"></img> */}
+                </div>   
+            </div>
+            <div className="row">
                 <div className="col-md-8" id="colunaCards">
                     <div className="row" id="linhaCards">
                         { listaPokemon.map(pokemon => {
                             return (
                             <> 
-                                <div className="col-md-4" id="cards">
+                                <div className="col-md-3" id="cards">
                                     <div className="card" id="itemCard">
                                         <div className="card-header">
                                             <h5>{ pokemon.nome }</h5>
@@ -57,7 +67,7 @@ export default function Pokemons() {
                                             R$ { pokemon.preço } cada   
                                         </div>
                                         <div className="card-footer">
-                                            <Button type="button" 
+                                            <Button type="button" className="botaoCard"
                                             onClick={() => tratarCompra(pokemon, 1)}>
                                             <small>Comprar</small>
                                             </Button>
@@ -71,7 +81,7 @@ export default function Pokemons() {
                     </div>
                 </div>
                 <div className="col-md-4" id="carrinho">
-                    <div className="card" id="itemCard">
+                    <div className="card" id="itemCarrinho">
                         {() => renderCarrinho()}
                     </div>
                 </div>    

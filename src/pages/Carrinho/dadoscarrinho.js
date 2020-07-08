@@ -62,7 +62,7 @@ class DadosCarrinho {
         const quantidadeItens = totaisCarrinho.quantidadeTotal + quantidade;
         const valorTotalProduto = precoTotalProduto;
         const quantidadeTotal = quantidadeItens;
-        const valorTotal = parseFloat(totalCarrinho);
+        const valorTotal = totalCarrinho;
         const totaisCarrinhoAtualizado = {quantidadeTotal, valorTotal};
         //atualiza quantidade e preco do item selecionado e acrescenta no produto do carrinho
         var quantidadeItem = quantidade;
@@ -93,7 +93,7 @@ class DadosCarrinho {
         }
         const produtoExcluir = carrinhoAtual[indice];
         const quantidadeItens = totaisCarrinho.quantidadeTotal - produtoExcluir.quantidadeItem;
-        const totalCarrinho= totaisCarrinho.valorTotal - produtoExcluir.precoTotal;
+        const totalCarrinho= (totaisCarrinho.valorTotal - produtoExcluir.precoTotal).toFixed(2);
 
         const quantidadeTotal = quantidadeItens;
         const valorTotal = totalCarrinho;
