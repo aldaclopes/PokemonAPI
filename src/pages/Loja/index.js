@@ -5,7 +5,7 @@ import {  } from 'react-router-dom';
 import consultarPokemon from '../Home/consulta';  
 // const { atualizarCarrinho, obterDadosCarrinho } = require('../Carrinho/dadocarrinho')
 // const Commander = require('commander')
-const DadosCarrinho = require('../Carrinho/dadoscarrinho')
+import DadosCarrinho from '../Carrinho/dadoscarrinho' 
 // const Carrinho = require('../Carrinho/carrinho')
 // const Produto = require('../Carrinho/produto')
 

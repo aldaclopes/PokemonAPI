@@ -124,4 +124,5 @@ class DadosCarrinho {
     // }
 }
 
-module.exports = new DadosCarrinho();
+export default  new DadosCarrinho();
+// module.exports = new DadosCarrinho();

@@ -4,11 +4,12 @@ import React,  { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import consultarPokemon from './consulta'  
+import DadosCarrinho from '../Carrinho/dadoscarrinho'  
 // const { consultarPokemon } = require('./consulta')
 import listarPokemon from './lista' 
 // const { listarPokemon } = require('./lista')
 // const Carrinho = require('../Carrinho/carrinho')
-const DadosCarrinho = require('../Carrinho/dadoscarrinho')
+// const DadosCarrinho = require('../Carrinho/dadoscarrinho')
 // const Produto = require('../Carrinho/produto')
 
 function App(props) {
