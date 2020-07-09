@@ -31,10 +31,11 @@ export default function Pokemons() {
         <div className="container-fluid">
             <S.Menu className="row">
                 <div className="col-md-3" id="Menu">
-                    <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png' width="30%" alt="logo pikachu"></img>
+                    <img src='https://pokeres.bastionbot.org/images/pokemon/25.png' width="20%" alt="logo pikachu"></img>
                 </div>
                 <div className="col-md-6" id="Menu">
 					<form className="form-inline">
+                        <p></p>
 						<input className="form-control mr-sm-8" type="text" placeholder="Pokemon" value={nomePokemon} onChange={e => setNome(e.target.value)}/> 
 						<Button className="btn btn-primary my-2 my-sm-8" type="submit" onClick={() =>buscarPokemon(nomePokemon)}>
 							Pesquisar
